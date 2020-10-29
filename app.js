@@ -16,26 +16,40 @@ var firestore = firebase.firestore();
 // Start grabbing DOM Element
 const submitBtn = document.querySelector('#submit');
 
-let userName = document.querySelector('#userFullName');
+let firstName = document.querySelector('#firstName');
+let lastName = document.querySelector('#lastName');
 let userEmail = document.querySelector('#userEmail');
-let userMessage = document.querySelector('#userMessage');
+let userName = document.querySelector('#userName');
+let password = document.querySelector('#password');
+let confirmPassword = document.querySelector('#confirmPassword');
 let userGender = document.querySelector('#userGender');
+let telePhone = document.querySelector('#telePhone');
+let userAddress = document.querySelector('#userAddress');
 
-const db = firestore.collection("contactData");
+const db = firestore.collection("userData");
 
 submitBtn.addEventListener('click', function () {
-    let userNameInput = userName.value;
+    let firstNameInput = firstName.value;
+    let lastNameInput = lastName.value;
     let userEmailInput = userEmail.value;
-    let userMessageInput = userMessage.value;
-    let userGenderInput = userGender.value;
+    let userNameInput = userName.value;
+    let passwordInput = password.value;
+    let confirmPasswordInput = confirmPassword.value;
+    let genderInput = userGender.value;
+    let telePhoneInput = telePhone.value;
+    let userAddressInput = userAddress.value;
 
     // Access the data collection
     db.doc()
       .set({
-            name: userNameInput,
+            firstname: firstNameInput,
+            lastname: lastNameInput,
             email: userEmailInput,
-            message: userMessageInput,
-            gender: userGenderInput
+            username: userNameInput,
+            password: passwordInput,
+            gender: genderInput,
+            telephone: telePhoneInput,
+            address: userAddressInput
         })
         .then(function(){
             console.log("Data Saved");
